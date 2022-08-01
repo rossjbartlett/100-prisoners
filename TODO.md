@@ -1,0 +1,3 @@
+- use styled-components in this Dashboard.tsx
+- customize TICK_TIME on UI
+- customize SHOW_ALERTS on UI

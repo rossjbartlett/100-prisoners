@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS test_table (
-	id serial PRIMARY KEY,
-	value TEXT NOT NULL,
-	timestamp TIMESTAMP NOT NULL DEFAULT NOW()
-);
