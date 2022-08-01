@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  postgresdb:
+    image: postgres:14.4-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test_db
+    ports:
+      - '5432:5432'
+    volumes:
+      # uncomment the line below to store db data locally to persist between restarts
+      # - ./postgresdb/data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./postgresdb/seed_db/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # copy the sql script to seed tables
+      - ./postgresdb/seed_db/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+
+  restapi:
+    build: ./restapi
+    ports:
+      - '4444:4000'
+
+  webapp:
+    build: ./webapp
+    ports:
+      - '8888:80'
+    environment:
+      - TEST_COMPOSE_ENV=http://localhost:4444ddd

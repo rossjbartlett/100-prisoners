@@ -1,0 +1,12 @@
+{
+  "title": "Create Row Body",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "value of new Row to add"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["value"]
+}
