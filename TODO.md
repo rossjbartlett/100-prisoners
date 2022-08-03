@@ -1,3 +1,4 @@
-- use styled-components in this Dashboard.tsx
-- customize TICK_TIME on UI
-- customize SHOW_ALERTS on UI
+- extract components from Dashboard.tsx
+- pause button
+- can't change showAlerts if tick time is too fast while showAlerts=true
+- extract webapp and src, rm docker?

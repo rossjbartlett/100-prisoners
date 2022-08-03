@@ -6,7 +6,6 @@ import { Box } from '../types/types'
 const StyledCardGridContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   align-items: center;
 `
 const StyledCardGrid = styled.div`
@@ -37,14 +36,14 @@ export function CardGrid({
     }
     if (box.label === currentGuess) {
       // prisoner made an incorrect guess
-      return 'dodgerblue'
+      return 'deepskyblue'
     }
     if (box.visited) {
       // box was visited by the prisoner
-      return 'goldenrod'
+      return 'gold'
     }
     // box has not yet been opened
-    else return 'whitesmoke'
+    return 'whitesmoke'
   }
 
   return (

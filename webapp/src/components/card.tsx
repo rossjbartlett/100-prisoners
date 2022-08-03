@@ -25,15 +25,22 @@ interface CardProps {
   cardLabel: number
   cardValue?: number
   color: string
+  style?: React.CSSProperties
 }
 
-export function Card({ cardLabel, cardValue, color }: CardProps): JSX.Element {
+export function Card({
+  cardLabel,
+  cardValue,
+  color,
+  style,
+}: CardProps): JSX.Element {
   const hasValue = cardValue !== undefined
   return (
     <StyledCardContainer
       style={{
         backgroundColor: color,
         padding: hasValue ? '15px 15px 0 15px' : '15px',
+        ...style,
       }}
     >
       <p>{cardLabel}</p>

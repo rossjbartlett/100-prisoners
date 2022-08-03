@@ -28,4 +28,4 @@ Start the application using the following command:
 docker-compose up -d
 ```
 
-The webapp will run in docker and is forwarded to http://localhost:8888](http://localhost:8888).
+The webapp will run in docker and is forwarded to [http://localhost:8888](http://localhost:8888).
