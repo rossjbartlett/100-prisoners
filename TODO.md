@@ -1,4 +1,3 @@
-- extract components from Dashboard.tsx
 - pause button
 - can't change showAlerts if tick time is too fast while showAlerts=true
 - extract webapp and src, rm docker?

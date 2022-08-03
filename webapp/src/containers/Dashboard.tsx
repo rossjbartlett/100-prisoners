@@ -113,7 +113,7 @@ export function Dashboard(): JSX.Element {
     return () => {
       clearInterval(interval)
     }
-  }) // TODO UI doesn't update when use tickTime in setInterval
+  })
 
   useEffect(() => {
     // detect/handle success
