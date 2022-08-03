@@ -1,3 +1,4 @@
 - pause button
+- UI jitters when numGuesses goes to 2 digits
 - can't change showAlerts if tick time is too fast while showAlerts=true
 - extract webapp and src, rm docker?

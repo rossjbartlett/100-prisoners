@@ -10,8 +10,9 @@ import 'react-input-range/lib/css/index.css'
 
 const NUM_BOXES = 100
 const MAX_GUESSES = NUM_BOXES / 2
-const MIN_TICK_TIME = 100
+const MIN_TICK_TIME = 5
 const MAX_TICK_TIME = 1500
+const TICK_TIME_STEP = 5
 
 const Container = styled.div`
   display: flex;
@@ -102,8 +103,8 @@ export function Dashboard(): JSX.Element {
         markBoxAsVisited(guess)
         return
       }
-      const currentGuessBox = boxes.find((b) => b.label === currentGuess)!
       // move to next guess
+      const currentGuessBox = boxes.find((b) => b.label === currentGuess)!
       const guess = currentGuessBox.value
       incrementNumGuesses()
       setCurrentGuess(guess)
@@ -132,7 +133,9 @@ export function Dashboard(): JSX.Element {
 
   function handleSuccess(): void {
     notify(
-      `prisoner ${currentPrisoner} SUCCEEDED in ${numGuesses} guesses`,
+      `prisoner ${currentPrisoner} SUCCEEDED in ${numGuesses} guess${
+        numGuesses > 1 ? 'es' : ''
+      }`,
       showAlerts,
     )
     const nextPrisoner = currentPrisoner + 1
@@ -140,7 +143,6 @@ export function Dashboard(): JSX.Element {
       // this attempt won
       notify('WIN', showAlerts)
       setNumWins((prev) => prev + 1)
-      // restart
       startNewAttempt()
       return
     }
@@ -159,7 +161,7 @@ export function Dashboard(): JSX.Element {
           <InputRange
             minValue={MIN_TICK_TIME}
             maxValue={MAX_TICK_TIME}
-            step={100}
+            step={TICK_TIME_STEP}
             formatLabel={(value: number): string => `${value} ms`}
             value={tickTime}
             onChange={(value) => setTickTime(value as number)}
