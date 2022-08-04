@@ -1,7 +1,0 @@
-version: '2'
-
-services:
-  webapp:
-    build: ./webapp
-    ports:
-      - '8888:80'

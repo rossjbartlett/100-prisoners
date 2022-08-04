@@ -111,7 +111,7 @@ export function Dashboard(): JSX.Element {
       markBoxAsVisited(guess)
     }, tickTime)
 
-    return () => {
+    return (): void => {
       clearInterval(interval)
     }
   })
