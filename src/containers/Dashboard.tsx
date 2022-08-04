@@ -24,6 +24,7 @@ const Container = styled.div`
 const InfoPanel = styled.div`
   display: flex;
   flex-direction: column;
+  width: 200px;
 
   & > p {
     margin: 1rem 0 0 0;

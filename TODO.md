@@ -1,4 +1,4 @@
 - pause button
-- UI jitters when numGuesses goes to 2 digits
 - can't change showAlerts if tick time is too fast while showAlerts=true
 - is interval working as expected? it appears to be creating a new interval every render
+- responsive UI
