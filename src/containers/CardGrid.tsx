@@ -16,9 +16,9 @@ const StyledCardGrid = styled.div`
 `
 
 interface CardGridProps {
-  boxes: Box[]
-  currentGuess: number | null
-  currentPrisoner: number
+  readonly boxes: readonly Box[]
+  readonly currentGuess: number | null
+  readonly currentPrisoner: number
 }
 
 export function CardGrid({

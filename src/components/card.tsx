@@ -22,10 +22,10 @@ const StyledCardContainer = styled.div`
 `
 
 interface CardProps {
-  cardLabel: number
-  cardValue?: number
-  color: string
-  style?: React.CSSProperties
+  readonly cardLabel: number
+  readonly cardValue?: number
+  readonly color: string
+  readonly style?: React.CSSProperties
 }
 
 export function Card({

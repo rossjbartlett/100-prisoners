@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import InputRange from 'react-input-range'
 import Switch from 'react-switch'
 import styled from 'styled-components'
+import 'react-input-range/lib/css/index.css'
 import { Box } from '../types/types'
 import { Card } from '../components/card'
 import { CardGrid } from './CardGrid'
-import { notify } from '../utils/utils'
-import 'react-input-range/lib/css/index.css'
+import { notify, shuffle } from '../utils/utils'
 
 const NUM_BOXES = 100
 const MAX_GUESSES = NUM_BOXES / 2
@@ -36,12 +36,9 @@ const ControlItem = styled.div`
   margin: 30px 0;
 `
 
-function getNewBoxes(): Box[] {
+function getNewBoxes(): readonly Box[] {
   // randomize value order
-  const values = new Array(NUM_BOXES)
-    .fill(null)
-    .map((_, i) => i + 1)
-    .sort(() => Math.random() - 0.5)
+  const values = shuffle(new Array(NUM_BOXES).fill(null).map((_, i) => i + 1))
   // make boxes
   const boxes = new Array(NUM_BOXES)
     .fill(0)
@@ -50,7 +47,7 @@ function getNewBoxes(): Box[] {
 }
 
 export function Dashboard(): JSX.Element {
-  const [boxes, setBoxes] = useState<Box[]>(getNewBoxes())
+  const [boxes, setBoxes] = useState<readonly Box[]>(getNewBoxes())
   const [currentPrisoner, setCurrentPrisoner] = useState<number>(1)
   const [currentGuess, setCurrentGuess] = useState<number | null>(null)
   const [numGuesses, setNumGuesses] = useState<number>(0)
@@ -116,21 +113,6 @@ export function Dashboard(): JSX.Element {
     }
   })
 
-  useEffect(() => {
-    // detect/handle success
-    const currentGuessBox = boxes.find((b) => b.label === currentGuess)
-    const success = currentGuessBox && currentGuessBox.value === currentPrisoner
-    if (!success) {
-      return
-    }
-
-    const timer = setTimeout(() => {
-      handleSuccess()
-    }, tickTime)
-
-    return () => clearTimeout(timer)
-  }, [currentPrisoner, currentGuess, tickTime])
-
   function handleSuccess(): void {
     notify(
       `prisoner ${currentPrisoner} SUCCEEDED in ${numGuesses} guess${
@@ -153,6 +135,21 @@ export function Dashboard(): JSX.Element {
     setCurrentGuess(null)
   }
 
+  useEffect(() => {
+    // detect/handle success
+    const currentGuessBox = boxes.find((b) => b.label === currentGuess)
+    const success = currentGuessBox && currentGuessBox.value === currentPrisoner
+    if (!success) {
+      return
+    }
+
+    const timer = setTimeout(() => {
+      handleSuccess()
+    }, tickTime)
+
+    return (): void => clearTimeout(timer)
+  }, [currentPrisoner, currentGuess, tickTime])
+
   return (
     <Container>
       <InfoPanel>
@@ -164,7 +161,7 @@ export function Dashboard(): JSX.Element {
             step={TICK_TIME_STEP}
             formatLabel={(value: number): string => `${value} ms`}
             value={tickTime}
-            onChange={(value) => setTickTime(value as number)}
+            onChange={(value): void => setTickTime(value as number)}
           />
         </ControlItem>
         <ControlItem>
