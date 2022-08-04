@@ -88,7 +88,7 @@ export function Dashboard(): JSX.Element {
   useEffect(() => {
     const interval = setInterval(() => {
       if (numGuesses >= MAX_GUESSES) {
-        notify(`prisoner ${currentPrisoner} FAILED`, showAlerts)
+        notify(`Prisoner ${currentPrisoner} FAILED`, showAlerts)
         startNewAttempt()
         return
       }
@@ -102,7 +102,10 @@ export function Dashboard(): JSX.Element {
         return
       }
       // move to next guess
-      const currentGuessBox = boxes.find((b) => b.label === currentGuess)!
+      const currentGuessBox = boxes.find((b) => b.label === currentGuess)
+      if (!currentGuessBox) {
+        throw new Error(`error finding box with label ${currentGuess}`)
+      }
       const guess = currentGuessBox.value
       incrementNumGuesses()
       setCurrentGuess(guess)
@@ -116,7 +119,7 @@ export function Dashboard(): JSX.Element {
 
   function handleSuccess(): void {
     notify(
-      `prisoner ${currentPrisoner} SUCCEEDED in ${numGuesses} guess${
+      `Prisoner ${currentPrisoner} SUCCEEDED in ${numGuesses} guess${
         numGuesses > 1 ? 'es' : ''
       }`,
       showAlerts,

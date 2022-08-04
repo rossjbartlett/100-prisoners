@@ -27,9 +27,6 @@ export function CardGrid({
   currentPrisoner,
 }: CardGridProps): JSX.Element {
   function getCardColor(box: Box): string {
-    if (currentGuess == null) {
-      return 'whitesmoke'
-    }
     if (box.value === currentPrisoner && currentGuess === box.label) {
       // a prisoner found their value
       return 'lime'
