@@ -15,6 +15,10 @@ If that drawer does not contain their number, they then open the drawer labelled
 
 This problem, and the strategy, have been featured in multiple [Youtube videos](https://youtu.be/iSNsgj1OCLA?t=35), [blogs](https://datagenetics.com/blog/december42014/index.html), and [whitepapers](https://math.mit.edu/~apost/courses/18.204_2018/Timothee_Schoen_paper.pdf).
 
+## Viewing the App
+
+Visit the application [here](https://rossjbartlett.github.io/100-prisoners/), deployed using Github Pages.
+
 ## Running the App
 
 The webapp can be run locally using `npm`.
