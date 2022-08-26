@@ -1,4 +1,2 @@
-- pause button
-- can't change showAlerts if tick time is too fast while showAlerts=true
-- is interval working as expected? it appears to be creating a new interval every render
+- set num prisoners
 - responsive UI

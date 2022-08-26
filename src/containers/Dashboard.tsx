@@ -35,6 +35,9 @@ const ControlItem = styled.div`
   display: flex;
   align-items: center;
   margin: 30px 0;
+  span {
+    margin-right: 20px;
+  }
 `
 
 function getNewBoxes(): readonly Box[] {
@@ -56,6 +59,7 @@ export function Dashboard(): JSX.Element {
   const [numAttempts, setNumAttempts] = useState<number>(0)
   const [showAlerts, setShowAlerts] = useState<boolean>(false)
   const [tickTime, setTickTime] = useState<number>(600)
+  const [isPaused, setIsPaused] = useState<boolean>(false)
 
   function startNewAttempt(): void {
     setNumAttempts((prev) => prev + 1)
@@ -86,7 +90,10 @@ export function Dashboard(): JSX.Element {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (isPaused) {
+      return
+    }
+    const timer = setTimeout(() => {
       if (numGuesses >= MAX_GUESSES) {
         notify(`Prisoner ${currentPrisoner} FAILED`, showAlerts)
         startNewAttempt()
@@ -111,9 +118,8 @@ export function Dashboard(): JSX.Element {
       setCurrentGuess(guess)
       markBoxAsVisited(guess)
     }, tickTime)
-
     return (): void => {
-      clearInterval(interval)
+      clearInterval(timer)
     }
   })
 
@@ -169,10 +175,17 @@ export function Dashboard(): JSX.Element {
           />
         </ControlItem>
         <ControlItem>
-          <span style={{ marginRight: '20px' }}>Show Alerts</span>
+          <span>Show Alerts</span>
           <Switch
             onChange={(checked): void => setShowAlerts(checked)}
             checked={showAlerts}
+          />
+        </ControlItem>
+        <ControlItem style={{ marginTop: 0 }}>
+          <span>Pause</span>
+          <Switch
+            onChange={(checked): void => setIsPaused(checked)}
+            checked={isPaused}
           />
         </ControlItem>
         <Card
