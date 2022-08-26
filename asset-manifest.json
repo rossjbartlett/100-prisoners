@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/100-prisoners/static/js/main.d2a664ef.chunk.js",
+    "main.js.map": "/100-prisoners/static/js/main.d2a664ef.chunk.js.map",
+    "runtime-main.js": "/100-prisoners/static/js/runtime-main.5eff1306.js",
+    "runtime-main.js.map": "/100-prisoners/static/js/runtime-main.5eff1306.js.map",
+    "static/css/2.2729d855.chunk.css": "/100-prisoners/static/css/2.2729d855.chunk.css",
+    "static/js/2.5da78b50.chunk.js": "/100-prisoners/static/js/2.5da78b50.chunk.js",
+    "static/js/2.5da78b50.chunk.js.map": "/100-prisoners/static/js/2.5da78b50.chunk.js.map",
+    "index.html": "/100-prisoners/index.html",
+    "precache-manifest.1ae0e113e1a17afc0b03fa9c336bed20.js": "/100-prisoners/precache-manifest.1ae0e113e1a17afc0b03fa9c336bed20.js",
+    "service-worker.js": "/100-prisoners/service-worker.js",
+    "static/css/2.2729d855.chunk.css.map": "/100-prisoners/static/css/2.2729d855.chunk.css.map",
+    "static/js/2.5da78b50.chunk.js.LICENSE.txt": "/100-prisoners/static/js/2.5da78b50.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5eff1306.js",
+    "static/css/2.2729d855.chunk.css",
+    "static/js/2.5da78b50.chunk.js",
+    "static/js/main.d2a664ef.chunk.js"
+  ]
+}
